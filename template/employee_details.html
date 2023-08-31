@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+</head>
+<body>
+ {% extends "base.html" %}
+
+    {% block content %}
+<center>
+    <h1>Employee Details</h1>
+    <p><strong>Employee ID:</strong> {{ employee[0] }}</p>
+    <p><strong>First Name:</strong> {{ employee[1] }}</p>
+    <p><strong>Last Name:</strong> {{ employee[2] }}</p>
+    <p><strong>Employee Post:</strong> {{ employee[3] }}</p>
+    <p><strong>Salary:</strong> {{ employee[4] }}</p>
+
+    <img src="{{ image_path }}" alt="{{ employee[1] }} {{ employee[2] }}">
+
+
+    <a href="{{ url_for('employee_list') }}">Back to Employee List</a>
+
+    </center>
+    {% endblock %}
+</body>
+</html>

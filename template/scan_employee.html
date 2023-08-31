@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Employee</title>
+</head>
+<body>
+  {% extends "base.html" %}
+
+    {% block content %}
+<center>
+    <h1>Scan Employee Face</h1>
+    <p style="color:blue;">Click the button below to scan your face</p>
+    <form action="{{ url_for('scan_employee') }}" method="post">
+        <button  type="submit">Scan Face</button>
+    </form>
+
+    </center>
+    {% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+
+

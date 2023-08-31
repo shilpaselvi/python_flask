@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+</head>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+      }
+
+     .update:hover {
+   color:  #f2f2f2;
+   font-size: 1.5em;
+   box-shadow: inset 0 0 15px rgba(0,0,0,0.6)
+}
+
+    </style>
+<body>
+  {% extends "base.html" %}
+
+    {% block content %}
+<center>
+
+    <h1 style="color:blue;" >Add Employee</h1>
+    <form method="POST" action="{{ url_for('add_employee') }}">
+         <div>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        </div>
+        <div>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required>
+        </div>
+        <div>
+        <label for="employee_post">Post:</label>
+        <input type="text" id="employee_post" name="employee_post" required>
+        </div>
+        <div>
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" required>
+        </div>
+        <div class="add">
+        <strong><input class="update" style="color:Navy;" type="submit" value="Add Employee"></strong>
+        </div>
+    </form>
+    <p style="color:green;">{{ message }}</p>
+<div>
+    </div>
+
+    </center>
+    {% endblock %}
+
+</body>
+</html>

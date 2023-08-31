@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management System</title>
+<script src="https://kit.fontawesome.com/4d273d6914.js" crossorigin="anonymous"></script>
+<!--    <link rel="stylesheet" href="style.css">-->
+</head>
+<style>
+    nav {
+        width: 200px;
+        height:100%;
+        background-color: #f2f2f2;
+    }
+
+<!--    ul {-->
+<!--        list-style-type: none;-->
+<!--        padding: 0;-->
+<!--    }-->
+
+<!--    li {-->
+<!--        padding: 10px;-->
+<!--    }-->
+
+<!--    li a {-->
+<!--        text-decoration: none;-->
+<!--        color: #000;-->
+<!--    }-->
+
+<!--    li a:hover {-->
+<!--        color: #ff0000;-->
+<!--    }-->
+
+   .sidebar {
+   height: 100%;
+   width: 200px;
+   top: 0;
+   left: 0;
+   position: fixed;
+
+   background-color: #247a8e;
+   padding-top: 20px;
+}
+.sidebar a {
+   display: block;
+   padding: 2% 4%;
+   text-decoration: none;
+   color: lightblue;
+   font-size: 1em;
+}
+.sidebar a:hover {
+   color:  pink;
+   font-size: 1.5em;
+   box-shadow: inset 0 0 15px rgba(0,0,0,0.6)
+}
+
+</style>
+
+<body>
+<!--<center>-->
+<!--    <h1>Employee Management System</h1>-->
+    <header>
+        <!-- Add your header content here -->
+
+<!--        <h2>LOGIC FOCUS</h2>-->
+    </header>
+
+    <!-- Side menu bar -->
+    <nav>
+        <ul>
+            <div class="sidebar">
+            <strong><h1>Logic Focus</h1></strong>
+           <div> <li><a href="/">Home</a></li></div>
+           <div> <li><a href="/employee_list">Employee List</a></li></div>
+            <div><li><a href="/add_employee">Add Employee</a></li></div>
+            <button onclick="location.href='{{ url_for('show_scan_employee_page') }}'">Scan Employee Face</button>
+<!--          <div><li><a href="/scan_employee">Scan Employee</a></li></div>-->
+
+            </div>
+        </ul>
+
+    </nav>
+
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+    </footer>
+</body>
+</html>
