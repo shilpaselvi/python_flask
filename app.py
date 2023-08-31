@@ -6,10 +6,15 @@ import cv2
 import numpy as np
 import mysql.connector
 import dlib
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = r'C:\Users\admin\PycharmProjects\pythonTask\employeelist\employee_images'
+
 
 app = Flask(__name__, template_folder='template')
 app.secret_key = 'your_secret_key'
 
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def connect():
     conn = mysql.connector.connect(
@@ -156,10 +161,19 @@ def add_employee():
         last_name = request.form['last_name']
         employee_post = request.form['employee_post']
         salary = request.form['salary']
+
+        uploaded_img = request.files['img']
+
+        if uploaded_img.filename != '':
+            img_filename = secure_filename(uploaded_img.filename)
+            img_path = os.path.join(app.config['UPLOAD_FOLDER'], img_filename)
+            uploaded_img.save(img_path)
+        else:
+            img_path = None
         conn = connect()
         cursor = conn.cursor()
-        sql = "INSERT INTO employees (first_name, last_name,employee_post,salary) VALUES (%s, %s, %s, %s)"
-        val = (first_name, last_name, employee_post, salary)
+        sql = "INSERT INTO employees (first_name, last_name,employee_post,salary,img) VALUES (%s, %s, %s, %s,%s)"
+        val = (first_name, last_name, employee_post, salary,img_path)
         cursor.execute(sql, val)
         conn.commit()
         conn.close()
